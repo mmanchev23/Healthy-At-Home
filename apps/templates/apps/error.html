@@ -1,0 +1,27 @@
+{% extends "apps/layout.html" %}
+
+{% block body %}
+
+<div style="display: flex;">
+  <div style="flex: 1;">
+    <p>
+
+    </p>
+  </div>
+  <div style="flex: 1; text-align: center; margin-top: 220px;">
+    <div>
+      <h1 style="font-family: Brush Script MT;">Healthy at home</h1>
+    </div>
+    <br>
+    <div style="width: 360px; display: inline-block; opacity: .7; font-size: large;" class="alert alert-danger" role="alert">
+      You are not logged into your account <br> or you do not have one.
+    </div>
+    <br>
+    <div style="flex: 1;">
+      <a style="margin-right: 25px; margin-top: 20px; background-color: blueviolet; border-color: blueviolet; width: 90px;" class="btn btn-primary" href="/login/" role="button">Log in</a>
+      <a style="margin-left: 25px; margin-top: 20px; background-color: blueviolet; border-color: blueviolet; width: 90px;" class="btn btn-primary" href="/register/" role="button">Register</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

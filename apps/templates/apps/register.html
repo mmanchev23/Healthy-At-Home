@@ -1,0 +1,51 @@
+{% extends "apps/layout.html" %}
+
+{% block body %}
+
+<div id="register-div">
+    <div class="mobile-delete" style="flex: 1"></div>
+    <div style="flex: 1;">
+        <div>
+            <h2 class="register-title">Register</h2>
+    
+            <br>
+            
+            
+       
+    
+        <form action="{% url 'register' %}" method="post" id="register-form" name="myForm" onsubmit="return validateForm()">
+            {% csrf_token %}
+            <div class="form-group">
+                <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="email" placeholder="Email Address">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Register">
+        </form>
+    
+        <br>
+    
+        <div id="register-login">
+            Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+        </div>
+
+        {% if message %}
+        <div id="register-message" class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endif %}
+
+        </div>
+    </div>
+  </div>
+
+    
+
+{% endblock %}

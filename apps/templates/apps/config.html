@@ -1,0 +1,37 @@
+{% extends "apps/layout.html" %}
+
+{% block body %}
+
+<div id="config-container">
+    <div class="container-login login">
+
+        {% if messageError %}
+            <div class="alert alert-danger">{{ messageError }}</div>
+        {% elif messageSuccess %}
+            <div class="alert alert-success">{{ messageSuccess }}</div>
+        {% endif %}
+
+        <form action="{% url 'config' username=request.user %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="label-config"><strong>Username</strong></label><br>
+                <input id="input-config" class="form-control" type="text" name="username" placeholder="Username" value="{{user.username}}">
+            </div>
+            <div class="form-group">
+                <label class="label-config"><strong>First Name</strong></label><br>
+                <input id="input-config" class="form-control" type="text" name="first_name" placeholder="First Name" value="{{user.first_name|title}}">
+            </div>
+            <div class="form-group">
+                <label class="label-config"><strong>Last Name</strong></label><br>
+                <input id="input-config" class="form-control" type="text" name="last_name" placeholder="Last Name" value="{{user.last_name|title}}">
+            </div>
+            <div class="form-group">
+                <label class="label-config"><strong>Email</strong></label><br>
+                <input id="input-config" class="form-control" type="email" name="email" placeholder="Email" value="{{user.email}}">
+            </div><br>
+            <input id="input-2" class="btn btn-primary login-buttom save" type="submit" value="Save">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

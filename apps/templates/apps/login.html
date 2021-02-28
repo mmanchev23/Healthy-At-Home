@@ -1,0 +1,37 @@
+{% extends "apps/layout.html" %}
+
+{% block body %}
+
+<div id="login-div">
+        <div class="mobile-delete" style="flex: 1"></div>
+        <div style="flex: 1;">
+            <div id="login-form">
+                <h2 class="login-title">Login</h2><br>
+                
+                <form action="{% url 'login' %}" method="post" id="login-form-input" name="myForm" onsubmit="return validateForm()">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="password" name="password" placeholder="Password">
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Login">
+                </form>
+                <div id="login-register">
+                    Don't have an account? <a href="{% url 'register' %}">Register here.</a>
+                </div>
+
+                {% if message %}
+                <div id="login-message" class="alert alert-danger" role="alert">
+                    {{message}}
+                </div>
+                {% endif %}
+                
+            </div>
+        </div>
+  </div>
+
+    
+
+{% endblock %}

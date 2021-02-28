@@ -1,0 +1,36 @@
+{% extends "apps/layout.html" %}
+
+{% block body %}
+
+<div id="create-container" class="card">
+    <div class="card-body" id="create-card-body">
+      {% if messageSuccess %}
+      <div class="alert alert-success">
+        {{messageSuccess}}
+      </div>
+        {% elif messageError %}
+        <div class="alert alert-danger">
+        {{messageError}}
+      </div>
+      {% endif %}
+      <h5 class="card-title">Create Workout</h5>
+      <p class="card-text">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label>Name: </label><br>
+            <input id="input-create" type="text" name="name" class="form-control" placeholder="Type a name"><br>
+            <label>Image: </label><br>
+            <input id="input-create" type="text" name="image" class="form-control" placeholder="Image url"><br>
+            <label>Video: </label><br>
+            <input id="input-create" type="text" name="video" class="form-control" placeholder="Video url" onclick="embeding()"><br>
+            <label>Description: </label> <br>
+            <input id="input-create" type="text" name="content" class="form-control" placeholder="Type a description"><br>
+            <label>Exercises: </label> <br>
+            <input id="input-create" type="text" name="exercises" class="form-control" placeholder="Type exercises"><br><br>
+            <button class="btn btn-primary" id="save-workout" style="margin-right: 10px;">Save</button>
+            <a class="btn btn-primary" id="create-btn" href="/workouts/">Back</a> 
+        </form>
+    </div>
+</div>
+
+{% endblock %}

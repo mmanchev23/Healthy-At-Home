@@ -1,0 +1,18 @@
+{% extends "apps/layout.html" %}
+
+{% block body %}
+<div class="main-sth">
+<div style="display: flex;" >
+    <div id="div-flex-1">
+        <h1 class="workout-name">{{workout.name}}</h1>
+    </div>
+    
+</div>
+<h2>{{workout.exercises|linebreaksbr}}</h2>
+<iframe width="560" height="315" src="{{workout.video}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div id="div-flex-2">
+    <a class="btn btn-danger" href="/workout/delete/{{workout.name}}"><i class="fa fa-trash"></i></a>
+    <a class="btn btn-primary" href="/workouts/"><i class="fa fa-angle-double-left"></i></a>
+</div>
+</div>
+{% endblock %}

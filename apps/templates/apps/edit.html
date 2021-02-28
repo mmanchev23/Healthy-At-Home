@@ -1,0 +1,41 @@
+{% extends "apps/layout.html" %}
+
+{% block body %}
+
+<div id="config-container">
+    <div class="container-login login">
+
+        {% if messageError %}
+            <div class="alert alert-danger">{{ messageError }}</div>
+        {% elif messageSuccess %}
+            <div class="alert alert-success">{{ messageSuccess }}</div>
+        {% endif %}
+
+        <form action="{% url 'edit' name=request.workout %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="label-config"><strong>Name</strong></label><br>
+                <input id="input-config" class="form-control" type="text" name="name" placeholder="Name" value="{{workout.name}}">
+            </div>
+            <div class="form-group">
+                <label class="label-config"><strong>Image</strong></label><br>
+                <input id="input-config" class="form-control" type="text" name="image" placeholder="Image" value="{{workout.image}}">
+            </div>
+            <div class="form-group">
+                <label class="label-config"><strong>Video</strong></label><br>
+                <input id="input-config" class="form-control" type="text" name="video" placeholder="Video" value="{{workout.video}}">
+            </div>
+            <div class="form-group">
+                <label class="label-config"><strong>Description</strong></label><br>
+                <input id="input-config" class="form-control" type="text" name="description" placeholder="Description" value="{{workout.context}}">
+            </div>
+            <div class="form-group">
+                <label class="label-config"><strong>Exercises</strong></label><br>
+                <input id="input-config" class="form-control" type="text" name="exercises" placeholder="Exercises" value="{{workout.exercises}}">
+            </div><br>
+            <input id="input-2" class="btn btn-primary login-buttom save" type="submit" value="Save">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
