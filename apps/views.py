@@ -30,11 +30,6 @@ def create_workout_view(request):
                 "messageError": "The 'Name' field can not be empty!"
             })
 
-        """if not image:
-            return render(request, "apps/create.html", {
-                "messageError": "The 'Image' field can not be empty!"
-            })"""
-
         if not video:
             return render(request, "apps/create.html", {
                 "messageError": "The 'Video' field can not be empty!"
@@ -52,14 +47,14 @@ def create_workout_view(request):
 
         workout = Workout(name=name, image=image, video=video, content=content, exercises=exercises)
 
-        if request.POST["image"]:
+        if request.POST["image"] != '':
             workout.image = request.POST["image"]
         else:
             workout.image = "https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
 
         workout.save()
         return render(request, "apps/create.html", {
-            "messageSuccess": "Workout created successfully!"
+            "messageSuccess": "Workout was sent for approval successfully!"
         })
     else:
         return render(request, "apps/create.html")
@@ -94,62 +89,6 @@ def workout_view(request, name):
     return render(request, "apps/workout.html", {
         "workout": workout
     })
-
-
-def edit_workout_view(request, name):
-    if request.method == "POST":
-        workout = Workout.objects.get(name=name)
-        name = request.POST["name"]
-        image = request.POST["image"]
-        video = request.POST["video"]
-        description = request.POST["description"]
-        exercises = request.POST["exercises"]
-
-        """Validation"""
-        if not name:
-            return render(request, "apps/edit.html", {
-                "messageError": "The 'Name' field can not be empty!"
-            })
-
-        if not image:
-            return render(request, "apps/edit.html", {
-                "messageError": "The 'Image' field can not be empty!"
-            })
-
-        if not video:
-            return render(request, "apps/edit.html", {
-                "messageError": "The 'Video' field can not be empty!"
-            })
-
-        if not description:
-            return render(request, "apps/edit.html", {
-                "messageError": "The 'Description' field can not be empty!"
-            })
-
-        if not exercises:
-            return render(request, "apps/edit.html", {
-                "messageError": "The 'Exercises' field can not be empty!"
-            })
-
-        """Updating Data"""
-        workout.name = name
-        workout.image = image
-        workout.video = video
-        workout.content = description
-        workout.exercises = exercises
-
-        workout.save()
-        return render(request, "apps/edit.html", {
-            "messageSuccess": "Workout updated successfully!"
-        })
-    else:
-        return render(request, "apps/edit.html")
-
-
-def delete_workout_view(request, name):
-    workout = Workout.objects.get(name=name)
-    workout.delete()
-    return redirect("workouts")
 
 
 def login_view(request):
@@ -193,7 +132,8 @@ def register_view(request):
         if len(str(password)) >= 8:
             hasAtleast8Characters = True
 
-        if not str(password).__contains__('!') or not str(password).__contains__('$') or not str(password).__contains__('#') or not str(password).__contains__('%'):
+        if not str(password).__contains__('!') or not str(password).__contains__('$') or not str(password).__contains__(
+                '#') or not str(password).__contains__('%'):
             hasNoForbidden = True
 
         if not username:

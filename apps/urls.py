@@ -8,11 +8,9 @@ urlpatterns = [
     path("BMICalculator/", views.bmi_calculator_view, name="BMI_Calculator"),
     path("CalorieCounter/", views.calorie_counter_view, name="Calorie_Counter"),
     path("workouts/", views.workouts_view, name="workouts"),
-    path("workout/<str:name>", views.workout_view, name="workout"),
-    path("workout/edit/<str:name>", views.edit_workout_view, name="edit"),
-    path("workout/delete/<str:name>", views.delete_workout_view, name="delete"),
+    path("workout/<str:name>/", views.workout_view, name="workout"),
     path("login/", views.login_view, name="login"),
     path("logout/", views.logout_view, name="logout"),
     path("register/", views.register_view, name="register"),
-    path("profile/config/<str:username>", views.config_view, name="config")
+    path("profile/config/<str:username>/", views.config_view, name="config")
 ]

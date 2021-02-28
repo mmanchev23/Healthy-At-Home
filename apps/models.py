@@ -12,3 +12,4 @@ class Workout(models.Model):
     video = models.URLField(max_length=300)
     content = models.TextField(max_length=255)
     exercises = models.TextField(max_length=500)
+    is_approved = models.BooleanField(default=False)
