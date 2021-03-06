@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -8,12 +9,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'aw^uujq2#(t0kk&dg!i^e_fevhw_+gegu0^y^q89-4v)f%)_2^'
+#SECRET_KEY = 'aw^uujq2#(t0kk&dg!i^e_fevhw_+gegu0^y^q89-4v)f%)_2^'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'aw^uujq2#(t0kk&dg!i^e_fevhw_+gegu0^y^q89-4v)f%)_2^')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = False
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["pmg-blg.com"]
 
 
 # Application definition
@@ -64,8 +67,12 @@ WSGI_APPLICATION = 'HealthyAtHome.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pmgblgc_healthy_at_home',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'pmgblgc_healthy',
+        'PASSWORD': 'Helthy@123'
     }
 }
 AUTH_USER_MODEL = "apps.User"

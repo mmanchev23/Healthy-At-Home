@@ -7,10 +7,10 @@
         <h1 class="workout-name">{{workout.name}}</h1>
     </div>
 </div>
-<h2>{{workout.exercises|linebreaksbr}}</h2>
-<iframe width="560" height="315" src="{{workout.video}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h2 class="workout-name">{{workout.exercises|linebreaksbr}}</h2>
+<iframe src="{{workout.video}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <div id="div-flex-2">
-    <a class="btn btn-primary" href="/workouts/">Back</a>
+    <a id="back-workout" class="btn btn-primary" href="/workouts/">Back</a>
 </div>
 </div>
 {% endblock %}

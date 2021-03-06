@@ -313,6 +313,25 @@ pre {
   align-items: center;
   flex-direction: column;
   height: 80vh;
+  margin: 2% 20% 0 20%;
+  border-radius: 5px;
+  outline: none;
+}
+
+iframe {
+  border-radius: 8px;
+  width: 60%; 
+  height: 50%;
+  box-shadow:  rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4);
+}
+
+#back-workout {
+  padding: 10px 20px 10px 20px;
+  font-size: 20px;
+}
+
+.workout-name {
+  text-align: center;
 }
 
 @media only screen and (max-width: 1250px) {
@@ -328,6 +347,9 @@ pre {
   .ta-center {
     align-items: center;
   }
+  #div-workouts1 {
+    color: #fff;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
@@ -337,6 +359,7 @@ pre {
 }
 
 @media only screen and (max-width: 991px) {
+  
   .logged {
     display: none;
   }
@@ -357,5 +380,30 @@ pre {
   }
   iframe {
     width: 80%;
+  }
+  .display-none-mobile {
+    display: none;
+  }
+  .error {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+  iframe {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main-sth {
+    margin: 10% 20% 0 20%;
+  }
+  #login-div {
+    margin-top: 80px;
+  }
+  #register-div,#index-div {
+    margin-top: 80px;
   }
 }

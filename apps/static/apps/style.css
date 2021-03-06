@@ -272,7 +272,12 @@ ul.todo#completed:after {
 
 #navbar-logo-tasks {
   font-family: Brush Script MT; 
-  color: black; 
+  color: black;
   font-size: xx-large;
 }
 
+@media only screen and (max-width: 1024px) {
+  #navbar-logo-tasks {
+    color: white;
+  }
+}
