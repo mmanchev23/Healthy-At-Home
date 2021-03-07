@@ -14,9 +14,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'aw^uujq2#(t0kk&dg!i^e_fevhw_+g
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = False
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["pmg-blg.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -67,12 +67,8 @@ WSGI_APPLICATION = 'HealthyAtHome.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pmgblgc_healthy_at_home',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'pmgblgc_healthy',
-        'PASSWORD': 'Helthy@123'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
     }
 }
 AUTH_USER_MODEL = "apps.User"
