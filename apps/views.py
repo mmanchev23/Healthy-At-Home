@@ -19,12 +19,14 @@ def tasks_view(request):
 
 def create_workout_view(request):
     if request.method == "POST":
+        """Getting the credentials from the frontend"""
         name = request.POST["name"]
         image = request.POST["image"]
         video = request.POST["video"]
         content = request.POST["content"]
         exercises = request.POST["exercises"]
 
+        """Validation"""
         if not name:
             return render(request, "apps/create.html", {
                 "messageError": "The 'Name' field can not be empty!"
@@ -45,13 +47,16 @@ def create_workout_view(request):
                 "messageError": "The 'Exercises' field can not be empty!"
             })
 
+        """Create the object and save it to the database"""
         workout = Workout(name=name, image=image, video=video, content=content, exercises=exercises)
 
+        """Save a default image in case of an empty 'image' field"""
         if request.POST["image"] != '':
             workout.image = request.POST["image"]
         else:
             workout.image = "https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
 
+        """Save the workout credentials and return success message"""
         workout.save()
         return render(request, "apps/create.html", {
             "messageSuccess": "Workout was sent for approval successfully!"
@@ -93,9 +98,12 @@ def workout_view(request, name):
 
 def login_view(request):
     if request.method == "POST":
+        """Getting the credentials from the frontend"""
         username = request.POST["username"]
         password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
+
+        """Log in the user if the credentials are valid otherwise return error message"""
         if user is not None:
             login(request, user)
             return HttpResponseRedirect(reverse("index"))
@@ -115,7 +123,7 @@ def logout_view(request):
 def register_view(request):
     if request.method == "POST":
 
-        """Getting the input data"""
+        """Getting the credentials from the frontend"""
         username = request.POST["username"]
         email = request.POST["email"]
         password = request.POST["password"]
@@ -132,8 +140,7 @@ def register_view(request):
         if len(str(password)) >= 8:
             hasAtleast8Characters = True
 
-        if not str(password).__contains__('!') or not str(password).__contains__('$') or not str(password).__contains__(
-                '#') or not str(password).__contains__('%'):
+        if not str(password).__contains__('!') or not str(password).__contains__('$') or not str(password).__contains__('#') or not str(password).__contains__('%'):
             hasNoForbidden = True
 
         if not username:
@@ -186,6 +193,7 @@ def register_view(request):
                 "message": "The password should not contains '!', '$', '#' or '%'!"
             })
 
+        """Attempt to create a new user and log them in"""
         try:
             user = User.objects.create_user(username, email, password)
             user.save()
@@ -201,6 +209,7 @@ def register_view(request):
 
 def config_view(request, username):
     if request.method == "POST":
+        """Getting the credentials from the frontend"""
         user = User.objects.get(username=username)
         username = request.POST["username"]
         first_name = request.POST["first_name"]
@@ -234,6 +243,7 @@ def config_view(request, username):
         user.last_name = last_name
         user.email = email
 
+        """Save the user credentials and return success message"""
         user.save()
         return render(request, "apps/config.html", {
             "messageSuccess": "Profile updated successfully!"
