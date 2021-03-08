@@ -19,6 +19,7 @@ def tasks_view(request):
 
 def create_workout_view(request):
     if request.method == "POST":
+        
         """Getting the credentials from the frontend"""
         name = request.POST["name"]
         image = request.POST["image"]
@@ -98,6 +99,7 @@ def workout_view(request, name):
 
 def login_view(request):
     if request.method == "POST":
+
         """Getting the credentials from the frontend"""
         username = request.POST["username"]
         password = request.POST["password"]
@@ -209,6 +211,7 @@ def register_view(request):
 
 def config_view(request, username):
     if request.method == "POST":
+
         """Getting the credentials from the frontend"""
         user = User.objects.get(username=username)
         username = request.POST["username"]
