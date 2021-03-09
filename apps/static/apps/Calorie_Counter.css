@@ -86,3 +86,8 @@ body {
     margin-top: 10px;
   }
 }
+@media only screen and (max-width: 400px) {
+  #brand-link-tag {
+    font-size: x-large;
+  }
+}

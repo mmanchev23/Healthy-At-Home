@@ -11,7 +11,7 @@
             <div class="alert alert-success">{{ messageSuccess }}</div>
         {% endif %}
 
-        <form action="{% url 'config' username=request.user %}" method="post">
+        <form action="{% url 'config' username=request.user %}" method="post" id="edit-form">
             {% csrf_token %}
             <div class="form-group">
                 <label class="label-config"><strong>Username</strong></label><br>

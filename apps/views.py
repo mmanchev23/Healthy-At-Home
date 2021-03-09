@@ -90,8 +90,8 @@ def workouts_view(request):
         return render(request, "apps/error.html")
 
 
-def workout_view(request, name):
-    workout = Workout.objects.get(name=name)
+def workout_view(request, workoutId):
+    workout = Workout.objects.get(pk=workoutId)
     return render(request, "apps/workout.html", {
         "workout": workout
     })

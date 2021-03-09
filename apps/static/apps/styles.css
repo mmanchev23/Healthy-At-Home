@@ -334,13 +334,11 @@ iframe {
   text-align: center;
 }
 
-@media only screen and (max-width: 1250px) {
-  #index-div2,#div-workouts1 {
-    color: #fff;
-  }
-  .container-login {
-    margin-top: 7rem;
-  }
+#edit-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 @media only screen and (max-width: 1350px) {
@@ -350,6 +348,26 @@ iframe {
   #div-workouts1 {
     color: #fff;
   }
+  iframe {
+    margin: 0 10% 0 10%;
+    width: 100%;
+  }
+  #navbar-logo {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  #index-div2,#div-workouts1 {
+    color: #fff;
+  }
+  .container-login {
+    margin-top: 7rem;
+  }
+  .main-sth {
+    margin-top: 2%;
+  }
+  
 }
 
 @media only screen and (max-width: 1024px) {
@@ -378,9 +396,6 @@ iframe {
   .workout-name,h2 {
     color: #fff;
   }
-  iframe {
-    width: 80%;
-  }
   .display-none-mobile {
     display: none;
   }
@@ -392,7 +407,8 @@ iframe {
     height: 50vh;
   }
   iframe {
-    width: 90%;
+    margin: 0 10% 0 10%;
+    width: 120%;
   }
 }
 
@@ -405,5 +421,29 @@ iframe {
   }
   #register-div,#index-div {
     margin-top: 80px;
+  }
+  iframe {
+    margin: 0 10% 0 10%;
+    width: 150%;
+  }
+  #navbar-logo {
+    font-size: x-large;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  html,body {
+    height: 105vh;
+  }
+  #navbar-logo {
+    font-size: large;
+  }
+  body {
+  background: url("homepage.jpg") fixed;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;  
   }
 }
